@@ -46,7 +46,7 @@ jobs:
           docker images || { echo "No images found"; exit 1; }
           docker stop spm24_test_project61 || true
           docker rm spm24_test_project61 || true
-          docker run --rm --name spm24_test_project61 -p 5063:5062 spm24_project61:latest &
+          docker run --rm --name spm24_test_project61 -p 5063:5061 spm24_project61:latest &
           sleep 10
           curl -f http://localhost:5063 || { docker stop spm24_test_project61; exit 1; }
           docker stop spm24_test_project61
@@ -61,4 +61,4 @@ jobs:
         script: |
           docker stop spm24_project61 || { echo "No running container to stop"; }
           docker rm spm24_project61 || { echo "No container to remove"; }
-          docker run -d --name spm24_project61 -p 5062:5062 spm24_project61:latest
+          docker run -d --name spm24_project61 -p 5062:5061 spm24_project61:latest
